@@ -5,7 +5,7 @@ var app = new Vue({
     selected:  "",
     addItem: null,
     photos: [
-      {name: 'baseball', id: 1, path: 'baseball.jpg'},
+      {name: 'baseball', id: 1, path: 'images/baseball.jpg'},
       {name: 'car', id: 2, path: 'car.jpg'},
       {name: 'glasses', id: 3, path: 'glasses.jpg'},
       {name: 'paintbrush', id: 4, path: 'paintbrush.jpg'},
