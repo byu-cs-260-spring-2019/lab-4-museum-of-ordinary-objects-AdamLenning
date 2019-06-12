@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const firebase = require('firebase-admin');
 const express = require('express');
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 const firebaseApp = firebase.initializeApp(
     functions.config().firebase
@@ -9,7 +9,7 @@ const firebaseApp = firebase.initializeApp(
 
 
 const app = express();
-app.use(bodyParser.json());
+/*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -22,7 +22,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/museum', {
   useNewUrlParser: true
 });
-
+*/
 
 // Create a new item in the museum: takes a title and a path to an image.
 var db = firebase.firestore();
