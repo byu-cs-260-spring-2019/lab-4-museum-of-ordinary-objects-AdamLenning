@@ -128,3 +128,4 @@ Your job is to fill in the back end by creating a REST API endpoint for deleting
 ## Testing
 
 You should be able to search for an item in the database, then press the delete button and delete it. You can use the front page to see if it is deleted. Use the Developer Tools and the Network and Console tabs to see if you are doing this right. You can also use `console.log` in the back end to and check for errors printed out from your Node server.
+`

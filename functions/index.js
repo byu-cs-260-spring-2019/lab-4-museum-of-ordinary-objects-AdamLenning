@@ -27,7 +27,7 @@ app.post('/api/items', async (req, res) => {
         let querySnapshot = await itemsRef.get();
         let numRecords = querySnapshot.docs.length;
         let item = {
-            id: numRecords + 1,
+            id: Math.random(),
             title: req.body.title,
             path: req.body.path
         };
@@ -38,4 +38,37 @@ app.post('/api/items', async (req, res) => {
         res.sendStatus(500);
       }
 });
+
+app.delete('/api/items/:id', async (req,res) => {
+  let id = req.params.id.toString();
+  var documentToDelete = itemsRef.doc(id);
+  try{
+      var doc = await documentToDelete.get();
+      if(!doc.exists){
+          res.status(404).send("Sorry, that item doesn't exist");
+          return;
+      }
+      else{
+          documentToDelete.delete();
+          res.sendStatus(200);
+          return;
+      }
+  }catch(err){
+      res.status(500).send("Error deleting document: ",err);
+  }
+});
+
+app.put('/api/items/:id', async (req, res) => {
+    let id = req.params.id.toString();
+    var documentToEdit = itemsRef.doc(id);
+    try{
+        documentToEdit.update({
+            "title" : req.body.title
+        });
+        return;
+    } catch(err) {
+        res.status(500).send("Error editing document: ",err);
+    }
+})
+
 exports.app = functions.https.onRequest(app);
