@@ -29,6 +29,7 @@ app.post('/api/items', async (req, res) => {
         let item = {
             id: Math.random(),
             title: req.body.title,
+            description: req.body.description,
             path: req.body.path
         };
         itemsRef.doc(item.id.toString()).set(item);
@@ -63,7 +64,8 @@ app.put('/api/items/:id', async (req, res) => {
     var documentToEdit = itemsRef.doc(id);
     try{
         documentToEdit.update({
-            "title" : req.body.title
+            "title" : req.body.title,
+            "description" : req.body.description
         });
         return;
     } catch(err) {
